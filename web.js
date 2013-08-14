@@ -2,7 +2,7 @@ var express = require('express'),
 	fs      = require('fs');
 	
 var app = express();
-app.use(express.static(__dirname + '/'));
+app.use("/css", express.static(__dirname + '/css'));
 app.get('/', function(req, response){
   var data = fs.readFileSync('map.html').toString();
   response.send(data)

@@ -1,0 +1,50 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+input {
+  width: 100%;
+}
+.row{
+  background: darkseagreen;
+  position:absolute;
+  width:100%;
+  z-index:1;
+}
+.col-6{  padding: 5px 0px;}
+#map-canvas, #map_canvas {
+  height: 100%;
+  width: 100%;
+}
+
+@media print {
+  html, body {
+    height: auto;
+  }
+
+  #map-canvas, #map_canvas {
+    height: 650px;
+  }
+}
+
+#panel {
+  position: absolute;
+  top: 5px;
+  left: 30%;
+  margin-left: -180px;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+}
+#panel2 {
+  position: absolute;
+  top: 5px;
+  left: 65%;
+  margin-left: -180px;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+}
