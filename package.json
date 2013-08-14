@@ -1,0 +1,8 @@
+{
+  "name": "gmaps",
+  "description": "Google Maps",
+  "version": "0.1",
+  "dependencies": {
+    "express": "3.x"
+  }
+}
