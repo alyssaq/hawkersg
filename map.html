@@ -128,6 +128,8 @@ function initialize() {
         directionsDisplay.setDirections(response);
         document.getElementById("box").innerHTML = "Approx walking distance: " + response.routes[0].legs[0].distance.text
                                                   + ", duration: " + response.routes[0].legs[0].duration.text;
+      } else {
+        document.getElementById("box").innerHTML = "Invalid location";
       }
     });
   }
