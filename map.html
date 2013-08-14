@@ -121,11 +121,13 @@ function initialize() {
     var request = {
         origin:start,
         destination:end,
-        travelMode: google.maps.DirectionsTravelMode.DRIVING
+        travelMode: google.maps.DirectionsTravelMode.WALKING
     };
     directionsService.route(request, function(response, status) {
       if (status == google.maps.DirectionsStatus.OK) {
         directionsDisplay.setDirections(response);
+        document.getElementById("box").innerHTML = "Approx walking distance: " + response.routes[0].legs[0].distance.text
+                                                  + ", duration: " + response.routes[0].legs[0].duration.text;
       }
     });
   }
@@ -137,9 +139,12 @@ google.maps.event.addDomListener(window, 'load', initialize);
   </script>
   </head>
   <body>
-    <div class="row">
-      <div class="col-6"><input id="origin" type="text" class="form-control" placeholder="From location"></div>
-      <div class="col-6"><input id="destination" type="text" class="form-control" placeholder="To location"></div>
+    <div class="top">
+      <div class="row">
+        <div class="col-6"><input id="origin" type="text" class="form-control" placeholder="From location"></div>
+        <div class="col-6"><input id="destination" type="text" class="form-control" placeholder="To location"></div>
+      </div>
+      <p id="box" class="text-center"></p>
     </div>
     <div id="map-canvas"></div>
   </body>

@@ -6,7 +6,7 @@ html, body {
 input {
   width: 100%;
 }
-.row{
+.top{
   background: darkseagreen;
   position:absolute;
   width:100%;
@@ -17,6 +17,7 @@ input {
   height: 100%;
   width: 100%;
 }
+.text-center {text-align: center;}
 
 @media print {
   html, body {
