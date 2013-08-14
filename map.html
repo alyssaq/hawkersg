@@ -25,8 +25,8 @@ function initialize() {
   var directionsService = new google.maps.DirectionsService();
 
   var defaultBounds = new google.maps.LatLngBounds(
-      new google.maps.LatLng(1.256117,103.612747),
-      new google.maps.LatLng(1.442147,103.994125));
+      new google.maps.LatLng(1.300395,103.629227),
+      new google.maps.LatLng(1.445922,103.977646));
   map.fitBounds(defaultBounds);
   directionsDisplay.setMap(map);
   var input = (document.getElementById('origin'));
@@ -131,6 +131,7 @@ function initialize() {
   }
 }
 
+google.maps.visualRefresh = true;
 google.maps.event.addDomListener(window, 'load', initialize);
 
   </script>
