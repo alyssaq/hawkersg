@@ -16,7 +16,7 @@ function initialize() {
     zoomControlOptions:  { position: leftPos },
     scaleControlOptions: { position: leftPos }
   });
-  var directionsDisplay = new google.maps.DirectionsRenderer();
+  var directionsDisplay = new google.maps.DirectionsRenderer({draggable:true});
   var directionsService = new google.maps.DirectionsService();
 
   map.fitBounds(new google.maps.LatLngBounds(
@@ -39,17 +39,18 @@ function initialize() {
       addr = '';
     if (!place.geometry) {
       document.getElementById("box").innerHTML = oriDest + " location not found";
+      isValid[oriDest]   = false;
       return;
     }
 
     if (place.address_components) {
-      addr = [
-        (place.address_components[0] && place.address_components[0].short_name || ''),
-        (place.address_components[1] && place.address_components[1].short_name || ''),
-        (place.address_components[2] && place.address_components[2].short_name || '')
-      ].join(' ');
+      var parts = place.address_components, addr = [];
+      for (var i = 0; i < parts.length; i = i + 1) {
+        addr.push(parts[i] && parts[i].short_name || '');
+      }
+      addr = place.formatted_address;//addr.join(', ');
       isValid[oriDest]   = true;
-      addresses[oriDest] = (place.name + "," + addr);
+      addresses[oriDest] = new google.maps.LatLng(place.geometry.location.mb,place.geometry.location.nb);
     }
 
     if (isValid['origin'] && isValid['destination']) {
