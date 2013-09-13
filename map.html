@@ -50,7 +50,14 @@ function initialize() {
       }
       addr = place.formatted_address;//addr.join(', ');
       isValid[oriDest]   = true;
-      addresses[oriDest] = new google.maps.LatLng(place.geometry.location.mb,place.geometry.location.nb);
+      var geom = [null, null], loc = place.geometry.location, i=0;
+      for (var o in loc) {
+        if (loc.hasOwnProperty(o)) {
+          geom[i] = loc[o];
+          i = i + 1;
+        }
+      }
+      addresses[oriDest] = new google.maps.LatLng(geom[0], geom[1]);
     }
 
     if (isValid['origin'] && isValid['destination']) {
