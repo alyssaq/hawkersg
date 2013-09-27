@@ -10,12 +10,18 @@
     <script>
   
 var staticMarkers = [], staticInfoWins = [],
-  openInfoObj = {idx : -1};
+  openInfoObj = {idx : -1, isOpen: false};
 
 var openWin = function(map, infoWin, marker, i) {
   return function(e) {
-    if (openInfoObj.idx >=0) staticInfoWins[openInfoObj.idx].close();
-    infoWin.open(map, marker);
+    if (openInfoObj.isOpen) {
+      staticInfoWins[openInfoObj.idx].close();
+      openInfoObj.isOpen = false;
+    } else {
+      infoWin.open(map, marker);
+      openInfoObj.isOpen = true;
+    }
+
     openInfoObj.idx = i;
   }
 }  
