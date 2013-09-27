@@ -8,6 +8,44 @@
     <title>Gmaps fun - Alyssa Quek</title>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
     <script>
+  
+var staticMarkers = [], staticInfoWins = [],
+  openInfoObj = {idx : -1};
+
+var openWin = function(map, infoWin, marker, i) {
+  return function(e) {
+    if (openInfoObj.idx >=0) staticInfoWins[openInfoObj.idx].close();
+    infoWin.open(map, marker);
+    openInfoObj.idx = i;
+  }
+}  
+
+function plotHawkerPlaces(map) {
+  var locations = <%- JSON.stringify(Locations) %>;
+
+  for (var i = 0; i < locations.length; i++) {
+    var m = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
+        map: map
+    });
+    var contentStr = 
+      '<div id="bodyContent">'+
+      '<b>' + locations[i].place_name + '</b>' +
+      '</div>';
+    var w = new google.maps.InfoWindow({
+        content: contentStr,
+        maxWidth: 200
+    });
+    staticMarkers.push(m);
+    staticInfoWins.push(w);
+  }
+
+  for (var j = 0; j < staticMarkers.length; j++) {
+    var openFunc = openWin(map, staticInfoWins[j], staticMarkers[j], j);
+    google.maps.event.addListener(staticMarkers[j], 'click', openFunc);
+  }
+}
+
 function initialize() {
   var leftPos = google.maps.ControlPosition.LEFT_CENTER,
     map = new google.maps.Map(document.getElementById('map-canvas'), {
@@ -19,11 +57,12 @@ function initialize() {
   var directionsDisplay = new google.maps.DirectionsRenderer(); //{draggable:true}
   var directionsService = new google.maps.DirectionsService();
 
-  map.fitBounds(new google.maps.LatLngBounds(
+  map.fitBounds(new google.maps.LatLngBounds( //Singapore bounds
     new google.maps.LatLng(1.300395,103.629227),
     new google.maps.LatLng(1.445922,103.977646)
   ));
   directionsDisplay.setMap(map);
+  plotHawkerPlaces(map); 
 
   var infowindow = new google.maps.InfoWindow(),
     marker = new google.maps.Marker({ map: map }),
