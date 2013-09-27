@@ -19,6 +19,28 @@ input {
 }
 .text-center {text-align: center;}
 
+
+/*------------------------------------*\
+    Botton Ribbon
+\*------------------------------------*/
+.infoBox {
+  position:absolute;
+  bottom: 40px;
+  color:#fff;
+  background:#F9A000;
+  float:left;
+  clear:both;
+  padding:5px;
+  text-shadow:0 -1px #F29D00, 0 1px #E79A00;
+  -moz-box-shadow:2px 2px 0 rgba(0,0,0,0.1);
+  -webkit-box-shadow:2px 2px 0 rgba(0,0,0,0.1);
+  -o-box-shadow:2px 2px 0 rgba(0,0,0,0.1);
+  box-shadow:2px 2px 0 rgba(0,0,0,0.1);
+}
+
+/*------------------------------------*\
+   Print media
+\*------------------------------------*/
 @media print {
   html, body {
     height: auto;
