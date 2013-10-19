@@ -10,19 +10,13 @@
     <script>
   
 var staticMarkers = [], staticInfoWins = [],
-  openInfoObj = {idx : -1, isOpen: false};
+  openInfoObjIdx = null;
 
 var openWin = function(map, infoWin, marker, i) {
   return function(e) {
-    if (openInfoObj.isOpen) {
-      staticInfoWins[openInfoObj.idx].close();
-      openInfoObj.isOpen = false;
-    } else {
-      infoWin.open(map, marker);
-      openInfoObj.isOpen = true;
-    }
-
-    openInfoObj.idx = i;
+    if (openInfoObjIdx) staticInfoWins[openInfoObjIdx].close();
+    infoWin.open(map, marker);
+    openInfoObjIdx = i;
   }
 }  
 
@@ -31,8 +25,8 @@ function plotHawkerPlaces(map) {
 
   for (var i = 0; i < locations.length; i++) {
     var m = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
-        map: map
+      position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
+      map: map
     });
     var contentStr = 
       '<div id="bodyContent">'+
