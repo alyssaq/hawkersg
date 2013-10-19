@@ -31,6 +31,11 @@ function plotHawkerPlaces(map) {
     var contentStr = 
       '<div id="bodyContent">'+
       '<b>' + locations[i].place_name + '</b>' +
+      '<br>' +
+      'Navigate: <br>' +
+      '<button type="button" class="btn">From here</button> &nbsp;' +
+      '<button type="button" class="btn">To here</button>' +
+      '<br>' +
       '</div>';
     var w = new google.maps.InfoWindow({
         content: contentStr,
