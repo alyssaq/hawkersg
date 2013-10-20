@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="Hawkers places in Singapore" />
+    <meta charset="utf-8">
+    <link href="/css/map.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <title>Gmaps fun - Alyssa Quek</title>
+  </head>
+  <body>
+    <div class="top">
+      <div class="row">
+        <div class="col-6"><input id="origin" type="text" class="form-control" placeholder="From location"></div>
+        <div class="col-6"><input id="destination" type="text" class="form-control" placeholder="To location"></div>
+      </div>
+      <p id="box" class="text-center"></p>
+    </div>
+    <div id="map-canvas"></div>
+    <div class="infoBox">There are <%= Locations.length %> plotted hawker places</div>  
+
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.4/require.min.js"></script>
+    <script>var app = {Locations: <%- JSON.stringify(Locations)%> }</script>
+    <script type="text/javascript" src="js/app.js"></script>
+  </body>
+</html>

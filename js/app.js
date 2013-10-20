@@ -1,13 +1,44 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <link href="/css/map.css" rel="stylesheet">
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <title>Gmaps fun - Alyssa Quek</title>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
-    <script>
+var staticMarkers = [], staticInfoWins = [], openInfoObjIdx = null;
+
+var openWin = function(map, infoWin, marker, i) {
+  return function(e) {
+    if (openInfoObjIdx) staticInfoWins[openInfoObjIdx].close();
+    infoWin.open(map, marker);
+    openInfoObjIdx = i;
+  }
+}  
+
+function plotHawkerPlaces(map) {
+  var locations = app.Locations;
+
+  for (var i = 0; i < locations.length; i++) {
+    var m = new google.maps.Marker({
+      position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
+      map: map
+    });
+    var contentStr = 
+      '<div id="bodyContent">'+
+      '<b>' + locations[i].place_name + '</b>' +
+      '<br>' +
+      'Navigate: <br>' +
+      '<button type="button" class="btn">From here</button> &nbsp;' +
+      '<button type="button" class="btn">To here</button>' +
+      '<br>' +
+      '</div>';
+    var w = new google.maps.InfoWindow({
+        content: contentStr,
+        maxWidth: 200
+    });
+    staticMarkers.push(m);
+    staticInfoWins.push(w);
+  }
+
+  for (var j = 0; j < staticMarkers.length; j++) {
+    var openFunc = openWin(map, staticInfoWins[j], staticMarkers[j], j);
+    google.maps.event.addListener(staticMarkers[j], 'click', openFunc);
+  }
+}
+
 function initialize() {
   var leftPos = google.maps.ControlPosition.LEFT_CENTER,
     map = new google.maps.Map(document.getElementById('map-canvas'), {
@@ -19,11 +50,12 @@ function initialize() {
   var directionsDisplay = new google.maps.DirectionsRenderer(); //{draggable:true}
   var directionsService = new google.maps.DirectionsService();
 
-  map.fitBounds(new google.maps.LatLngBounds(
+  map.fitBounds(new google.maps.LatLngBounds( //Singapore bounds
     new google.maps.LatLng(1.300395,103.629227),
     new google.maps.LatLng(1.445922,103.977646)
   ));
   directionsDisplay.setMap(map);
+  plotHawkerPlaces(map); 
 
   var infowindow = new google.maps.InfoWindow(),
     marker = new google.maps.Marker({ map: map }),
@@ -115,17 +147,3 @@ function initialize() {
 
 google.maps.visualRefresh = true;
 google.maps.event.addDomListener(window, 'load', initialize);
-
-  </script>
-  </head>
-  <body>
-    <div class="top">
-      <div class="row">
-        <div class="col-6"><input id="origin" type="text" class="form-control" placeholder="From location"></div>
-        <div class="col-6"><input id="destination" type="text" class="form-control" placeholder="To location"></div>
-      </div>
-      <p id="box" class="text-center"></p>
-    </div>
-    <div id="map-canvas"></div>
-  </body>
-</html>
