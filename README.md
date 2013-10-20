@@ -1,4 +1,7 @@
-gmaps
+Hawker places in Singapore
 =====
 
-http://gmaps-play.herokuapp.com/
+Find hawker places in Singapore and navigate to or from any of those places.   
+Site: http://gmaps-play.herokuapp.com/  
+
+Data taken from myhawkers.sg
