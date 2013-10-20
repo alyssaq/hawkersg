@@ -1,4 +1,4 @@
-Hawker places in Singapore
+Directions to hawkers in Singapore
 =====
 
 Find hawker places in Singapore and navigate to or from any of those places.   
