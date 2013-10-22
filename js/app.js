@@ -1,3 +1,8 @@
+function from(latlong) {
+  $("#origin").val(latlong);
+}
+
+(function() {
 var staticMarkers = [], staticInfoWins = [], openInfoObjIdx = null;
 
 var openWin = function(map, infoWin, marker, i) {
@@ -7,6 +12,7 @@ var openWin = function(map, infoWin, marker, i) {
     openInfoObjIdx = i;
   }
 }  
+
 
 function plotHawkerPlaces(map) {
   var locations = app.Locations;
@@ -21,8 +27,9 @@ function plotHawkerPlaces(map) {
       '<b>' + locations[i].place_name + '</b>' +
       '<br>' +
       'Navigate: <br>' +
-      '<button type="button" class="btn">From here</button> &nbsp;' +
-      '<button type="button" class="btn">To here</button>' +
+      '<button class="btn fromBtn" onclick=from("'+locations[i].lat+ ','+ locations[i].lng + '")>' +
+      'From here</button> &nbsp;' +
+      '<button class="btn toBtn" onclick="to()">To here</button>' +
       '<br>' +
       '</div>';
     var w = new google.maps.InfoWindow({
@@ -38,6 +45,7 @@ function plotHawkerPlaces(map) {
     google.maps.event.addListener(staticMarkers[j], 'click', openFunc);
   }
 }
+
 
 function initialize() {
   var leftPos = google.maps.ControlPosition.LEFT_CENTER,
@@ -147,3 +155,4 @@ function initialize() {
 
 google.maps.visualRefresh = true;
 google.maps.event.addDomListener(window, 'load', initialize);
+})();
