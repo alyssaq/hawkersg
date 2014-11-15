@@ -4,14 +4,18 @@
   "version": "0.0.1",
   "main": "web.js",
   "dependencies": {
-    "express": "3.x",
-    "ejs": "~0.8.4"
+    "body-parser": "1.6.3",
+    "compression": "1.0.11",
+    "cors": "2.4.1",
+    "ejs": "~0.8.4",
+    "express": "4.10.2",
+    "morgan": "1.2.2"
   },
   "engines": {
     "node": "0.10.x"
   },
-  "repository": { 
-    "type" : "github",
-    "url" : "https://github.com/alyssaq/gmaps"
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/alyssaq/gmaps"
   }
 }
