@@ -1,0 +1,354 @@
+/* General Demo Style */
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+@font-face {
+  font-family: 'fontawesome';
+  src:url('../fonts/fontawesome.eot');
+  src:url('../fonts/fontawesome.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/fontawesome.svg#fontawesome') format('svg'),
+    url('../fonts/fontawesome.woff') format('woff'),
+    url('../fonts/fontawesome.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body, html { 
+  height: 100%;
+  font-size: 100%;  
+  padding: 0;
+  margin: 0;
+}
+
+input {
+  width: 100%;
+}
+.top{
+  background: darkseagreen;
+  position:absolute;
+  width:100%;
+  z-index:1;
+}
+.top > .row {padding-top: 10px;}
+.col-6{  padding: 5px 0px;}
+#map-canvas, #map_canvas {
+  height: 100%;
+  width: 100%;
+}
+.text-center {text-align: center;}
+
+
+/*------------------------------------*\
+    Botton Ribbon
+\*------------------------------------*/
+.infoBox {
+  position:absolute;
+  bottom: 40px;
+  color:#fff;
+  background:#F9A000;
+  float:left;
+  clear:both;
+  padding:5px;
+  text-shadow:0 -1px #F29D00, 0 1px #E79A00;
+  -moz-box-shadow:2px 2px 0 rgba(0,0,0,0.1);
+  -webkit-box-shadow:2px 2px 0 rgba(0,0,0,0.1);
+  -o-box-shadow:2px 2px 0 rgba(0,0,0,0.1);
+  box-shadow:2px 2px 0 rgba(0,0,0,0.1);
+}
+
+
+/* Reset */
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+body {
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+    color: #47a3da;
+
+}
+
+a {
+  color: #f0f0f0;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #000;
+}
+
+.main,
+.container > header {
+  width: 90%;
+  max-width: 69em;
+  margin: 0 auto;
+  padding: 0 1.875em 3.125em 1.875em;
+}
+
+.container > header {
+  padding: 2.875em 1.875em 1.875em;
+}
+
+.container > header h1 {
+  font-size: 2.125em;
+  line-height: 1.3;
+  margin: 0;
+  float: left;
+  font-weight: 400;
+}
+
+.container > header span {
+  display: block;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  padding: 0 0 0.6em 0.1em;
+}
+
+.container > header nav {
+  float: right;
+}
+
+.container > header nav a {
+  display: block;
+  float: left;
+  position: relative;
+  width: 2.5em;
+  height: 2.5em;
+  background: #fff;
+  border-radius: 50%;
+  color: transparent;
+  margin: 0 0.1em;
+  border: 4px solid #47a3da;
+  text-indent: -8000px;
+}
+
+.container > header nav a:after {
+  content: attr(data-info);
+  color: #47a3da;
+  position: absolute;
+  width: 600%;
+  top: 120%;
+  text-align: right;
+  right: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.container > header nav a:hover:after {
+  opacity: 1;
+}
+
+.container > header nav a:hover {
+  background: #47a3da;
+}
+
+.main > section {
+  max-width: 260px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.main > section h2 {
+  font-weight: 300;
+  color: #ccc;
+}
+
+.main > section button {
+  border: none;
+  background: #47a3da;
+  color: #fff;
+  padding: 1.5em;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  margin: 10px 0;
+  font-size: 0.8em;
+}
+
+/* General styles for all menus */
+.cbp-spmenu {
+  background: #47a3da;
+  position: fixed;
+  color: white;
+}
+
+.cbp-spmenu h3 {
+  color: #afdefa;
+  font-size: 1.9em;
+  padding: 20px;
+  margin: 0;
+  font-weight: 300;
+  background: #0d77b6;
+}
+
+.cbp-spmenu .content {
+  padding: 20px;
+  margin: 0;
+}
+
+.cbp-spmenu a {
+  display: block;
+  color: #fff;
+  font-size: 1.1em;
+  font-weight: 300;
+}
+
+.cbp-spmenu a:hover {
+  background: #258ecd;
+}
+
+.cbp-spmenu a:active {
+  background: #afdefa;
+  color: #47a3da;
+}
+
+/* Orientation-dependent styles for the content of the menu */
+
+.cbp-spmenu-vertical {
+  width: 240px;
+  height: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.cbp-spmenu-vertical a {
+  border-bottom: 1px solid #258ecd;
+  padding: 1em;
+}
+
+.cbp-spmenu-horizontal {
+  width: 100%;
+  height: 150px;
+  left: 0;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.cbp-spmenu-horizontal h3 {
+  height: 100%;
+  width: 20%;
+  float: left;
+}
+
+.cbp-spmenu-horizontal a {
+  float: left;
+  width: 20%;
+  padding: 0.8em;
+  border-left: 1px solid #258ecd;
+}
+
+/* Vertical menu that slides from the left or right */
+
+.cbp-spmenu-left {
+  left: -240px;
+}
+
+.cbp-spmenu-right {
+  right: -240px;
+}
+
+.cbp-spmenu-left.cbp-spmenu-open {
+  left: 0px;
+}
+
+.cbp-spmenu-right.cbp-spmenu-open {
+  right: 0px;
+}
+
+/* Horizontal menu that slides from the top or bottom */
+
+.cbp-spmenu-top {
+  top: -150px;
+}
+
+.cbp-spmenu-bottom {
+  bottom: -150px;
+}
+
+.cbp-spmenu-top.cbp-spmenu-open {
+  top: 0px;
+}
+
+.cbp-spmenu-bottom.cbp-spmenu-open {
+  bottom: 0px;
+}
+
+/* Push classes applied to the body */
+
+.cbp-spmenu-push {
+  overflow-x: hidden;
+  position: relative;
+  left: 0;
+}
+
+.cbp-spmenu-push-toright {
+  left: 240px;
+}
+
+.cbp-spmenu-push-toleft {
+  left: -240px;
+}
+
+/* Transitions */
+
+.cbp-spmenu,
+.cbp-spmenu-push {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+/* Example media queries */
+
+@media screen and (max-width: 55.1875em){
+
+  .cbp-spmenu-horizontal {
+    font-size: 75%;
+    height: 110px;
+  }
+
+  .cbp-spmenu-top {
+    top: -110px;
+  }
+
+  .cbp-spmenu-bottom {
+    bottom: -110px;
+  }
+
+}
+
+@media screen and (max-height: 26.375em){
+
+  .cbp-spmenu-vertical {
+    font-size: 90%;
+    width: 190px;
+  }
+
+  .cbp-spmenu-left,
+  .cbp-spmenu-push-toleft {
+    left: -190px;
+  }
+
+  .cbp-spmenu-right {
+    right: -190px;
+  }
+
+  .cbp-spmenu-push-toright {
+    left: 190px;
+  }
+}

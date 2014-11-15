@@ -22,9 +22,14 @@ app.engine('html', require('ejs').renderFile);
 app.use("/css", express.static(__dirname + '/css'));
 app.use("/js" , express.static(__dirname  + '/js'));
 
-app.get('/', function(req, response){
+app.get('/', function (req, res) {
   var data = require('./hawkersSG.json');
-  response.render('index.ejs', data);
+  res.render('index.ejs', data);
+});
+
+app.get('/directions', function (req, res) {
+  var data = require('./hawkersSG.json');
+  res.render('directions.ejs', data);
 });
 
 var port = process.env.PORT || 8080;
