@@ -77,9 +77,8 @@ input {
 }
 
 body {
-    font-family: 'Lato', Calibri, Arial, sans-serif;
-    color: #47a3da;
-
+  font-family: 'Lato', Calibri, Arial, sans-serif;
+  color: #47a3da;
 }
 
 a {
@@ -182,7 +181,7 @@ a:hover {
 
 /* General styles for all menus */
 .cbp-spmenu {
-  background: #47a3da;
+  background: #89c4e2;
   position: fixed;
   color: white;
 }
